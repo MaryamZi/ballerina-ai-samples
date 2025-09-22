@@ -1,21 +1,18 @@
+// Works with 10_mcp_service.bal
+
 import ballerina/ai;
 import ballerina/io;
 
 final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
 public function main() returns error? {
-    final ai:McpToolKit|error weatherMcpConn = new (
+    final ai:McpToolKit weatherMcpConn = check new (
         "http://localhost:9090/mcp", 
         ["getCurrentWeather"], 
         info = {
             name: "Weather MCP server",
             version: "1.0"
         });
-
-    if weatherMcpConn is error {
-        io:println("Error creating MCP tool kit: " + weatherMcpConn.message());
-        return;
-    }
 
     final ai:Agent weatherAgent = check new (
         systemPrompt = {
