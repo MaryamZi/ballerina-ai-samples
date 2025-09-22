@@ -1,0 +1,8 @@
+[package]
+org = "maryamm"
+name = "app03_direct_llm_call_with_structured_output"
+version = "0.1.0"
+distribution = "2201.13.0-m3"
+
+[build-options]
+observabilityIncluded = true
